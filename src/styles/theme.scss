@@ -1,12 +1,12 @@
 @use '@angular/material' as mat;
 
-// Define the theme configuration
-$custom-primary: mat.define-palette(mat.$teal-palette, 500);
-$custom-accent: mat.define-palette(mat.$orange-palette, 500);
-$custom-warn: mat.define-palette(mat.$red-palette, 500);
+// Define cores usando a API M2
+$custom-primary: mat.m2-define-palette(mat.$m2-teal-palette, 500);
+$custom-accent: mat.m2-define-palette(mat.$m2-orange-palette, 500);
+$custom-warn: mat.m2-define-palette(mat.$m2-red-palette, 500);
 
-// Create the theme
-$custom-theme: mat.define-light-theme((
+// Cria o tema
+$custom-theme: mat.m2-define-light-theme((
   color: (
     primary: $custom-primary,
     accent: $custom-accent,
@@ -14,50 +14,10 @@ $custom-theme: mat.define-light-theme((
   )
 ));
 
-// CSS Custom Properties for easy theme switching
-:root {
-  --primary-color: #14B8A6;
-  --primary-light: #2DD4BF;
-  --primary-dark: #0F766E;
-  --accent-color: #F97316;
-  --accent-light: #FB923C;
-  --accent-dark: #C2410C;
-  --warn-color: #EF4444;
-  --success-color: #10B981;
-  --surface-color: #FFFFFF;
-  --surface-variant: #F8FAFC;
-  --background-color: #F9FAFB;
-  --text-primary: #1F2937;
-  --text-secondary: #6B7280;
-  --border-color: #E5E7EB;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-}
-
-// Dark theme variant
-[data-theme="dark"] {
-  --primary-color: #14B8A6;
-  --primary-light: #2DD4BF;
-  --primary-dark: #0F766E;
-  --accent-color: #F97316;
-  --accent-light: #FB923C;
-  --accent-dark: #C2410C;
-  --warn-color: #EF4444;
-  --success-color: #10B981;
-  --surface-color: #1F2937;
-  --surface-variant: #374151;
-  --background-color: #111827;
-  --text-primary: #F9FAFB;
-  --text-secondary: #D1D5DB;
-  --border-color: #374151;
-}
-
-// Include theme styles
-@include mat.core-theme($custom-theme);
+// Inclui o tema para todos os componentes
 @include mat.all-component-themes($custom-theme);
 
-// Custom utility classes
+// Variáveis de utilidade (mantendo o que você já tinha)
 .surface {
   background-color: var(--surface-color);
   color: var(--text-primary);
